@@ -19,10 +19,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        obsidian: "hsl(var(--obsidian))",
-        "metro-blue": "hsl(var(--metro-blue))",
-        "venture-gold": "hsl(var(--venture-gold))",
-        "signal-green": "hsl(var(--signal-green))",
+        "brand-purple": "hsl(var(--brand-purple))",
+        "brand-magenta": "hsl(var(--brand-magenta))",
+        "brand-red": "hsl(var(--brand-red))",
+        "brand-cyan": "hsl(var(--brand-cyan))",
+        "brand-yellow": "hsl(var(--brand-yellow))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -62,7 +63,7 @@ export default {
       },
       backgroundImage: {
         'gradient-metro': 'var(--gradient-metro)',
-        'gradient-depth': 'var(--gradient-depth)',
+        'gradient-soft': 'var(--gradient-soft)',
         'gradient-glow': 'var(--gradient-glow)',
       },
       borderRadius: {

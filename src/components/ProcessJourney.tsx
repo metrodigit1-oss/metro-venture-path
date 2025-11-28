@@ -7,31 +7,31 @@ const stations = [
     icon: Lightbulb,
     title: "Idea Stage",
     description: "You have a vision. We validate it with market research and technical feasibility analysis.",
-    color: "venture-gold"
+    color: "brand-yellow"
   },
   {
     icon: FileText,
     title: "Investment Round",
     description: "Smart capital injection. $50K-$500K in exchange for equity—plus our expertise.",
-    color: "venture-gold"
+    color: "brand-purple"
   },
   {
     icon: Hammer,
     title: "MVP Development",
     description: "6-12 week sprints to build your minimum viable product. Agile, transparent, on-time.",
-    color: "metro-blue"
+    color: "brand-magenta"
   },
   {
     icon: LineChart,
     title: "Market Launch",
     description: "Beta testing, user feedback, iteration. We help you find product-market fit.",
-    color: "signal-green"
+    color: "brand-cyan"
   },
   {
     icon: Trophy,
     title: "Scale & Exit",
     description: "Series A prep, growth hacking, or acquisition. We've been here before.",
-    color: "signal-green"
+    color: "brand-red"
   }
 ];
 
@@ -45,7 +45,7 @@ const ProcessJourney = () => {
   const lineProgress = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="py-32 px-6 bg-gradient-depth" ref={containerRef}>
+    <section id="process" className="py-32 px-6 bg-gradient-soft" ref={containerRef}>
       <div className="max-w-4xl mx-auto">
         <motion.div 
           className="text-center mb-24"

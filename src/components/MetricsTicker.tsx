@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 import { TrendingUp, Code, Rocket } from "lucide-react";
 
 const metrics = [
-  { icon: TrendingUp, label: "Total Valuation Created", value: "$180M+", color: "venture-gold" },
-  { icon: Code, label: "Lines of Code Written", value: "2.4M+", color: "metro-blue" },
-  { icon: Rocket, label: "Projects Launched", value: "47", color: "signal-green" },
-  { icon: TrendingUp, label: "Average Exit Multiple", value: "8.2x", color: "venture-gold" },
+  { icon: TrendingUp, label: "Total Valuation Created", value: "$180M+", color: "brand-purple" },
+  { icon: Code, label: "Lines of Code Written", value: "2.4M+", color: "brand-magenta" },
+  { icon: Rocket, label: "Projects Launched", value: "47", color: "brand-red" },
+  { icon: TrendingUp, label: "Average Exit Multiple", value: "8.2x", color: "brand-cyan" },
 ];
 
 const MetricsTicker = () => {
   return (
-    <section className="py-20 border-y border-border bg-card/30 backdrop-blur-sm">
+    <section className="py-20 border-y border-border bg-gradient-to-r from-brand-purple/5 via-brand-magenta/5 to-brand-red/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {metrics.map((metric, index) => (

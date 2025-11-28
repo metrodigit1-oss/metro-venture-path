@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
-      {/* Background Gradient Glow */}
-      <div className="absolute inset-0 bg-gradient-glow opacity-50" />
+    <section id="contact" className="py-32 px-6 relative overflow-hidden bg-gradient-to-br from-brand-purple/10 via-brand-magenta/10 to-brand-red/10">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 right-10 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-magenta/20 rounded-full blur-3xl" />
+      </div>
       
       <motion.div 
         className="max-w-4xl mx-auto text-center relative z-10"
@@ -28,7 +31,7 @@ const CTA = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <Button 
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-7 text-lg font-semibold glow-blue group"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-7 text-lg font-semibold glow-purple group"
           >
             <Mail className="mr-2" />
             Start Your Application
@@ -38,7 +41,7 @@ const CTA = () => {
           <Button 
             size="lg"
             variant="outline"
-            className="border-2 border-muted-foreground hover:bg-muted px-10 py-7 text-lg"
+            className="border-2 border-primary hover:bg-primary hover:text-primary-foreground px-10 py-7 text-lg"
           >
             Schedule a Call
           </Button>
