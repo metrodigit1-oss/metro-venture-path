@@ -2,70 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Metro Digitech Design System - Light & Vibrant */
+    /* Metro Digitech Design System - Electric & Vibrant */
     
-    /* Core Brand Colors - Inspired by Logo */
-    --brand-purple: 248 58% 50%;
-    --brand-magenta: 328 100% 54%;
-    --brand-red: 357 85% 57%;
-    --brand-cyan: 184 100% 50%;
-    --brand-yellow: 48 100% 50%;
+    /* Neon Core Colors */
+    --brand-purple: 270 100% 60%;
+    --brand-magenta: 310 100% 55%;
+    --brand-red: 350 100% 60%;
+    --brand-cyan: 190 100% 50%;
+    --brand-yellow: 50 100% 55%;
     
-    /* Surface Colors - Light & Clean */
-    --background: 0 0% 100%;
-    --foreground: 248 58% 20%;
+    /* Surface Colors - Slightly cool tinted white */
+    --background: 240 20% 99%;
+    --foreground: 260 50% 15%;
     
-    --card: 0 0% 98%;
-    --card-foreground: 248 58% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 260 50% 15%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 248 58% 20%;
+    --popover-foreground: 260 50% 15%;
     
     /* Semantic Colors */
-    --primary: 248 58% 50%;
+    --primary: 270 100% 60%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 328 100% 54%;
+    --secondary: 310 100% 55%;
     --secondary-foreground: 0 0% 100%;
     
-    --muted: 248 20% 95%;
-    --muted-foreground: 248 20% 40%;
+    --muted: 260 30% 96%;
+    --muted-foreground: 260 20% 45%;
     
-    --accent: 357 85% 57%;
+    --accent: 190 100% 50%;
     --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 84% 60%;
+    --destructive: 0 90% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --success: 142 76% 45%;
-    --success-foreground: 0 0% 100%;
+    --border: 260 30% 92%;
+    --input: 260 30% 92%;
+    --ring: 270 100% 60%;
     
-    /* Borders & Inputs */
-    --border: 248 20% 88%;
-    --input: 248 20% 88%;
-    --ring: 248 58% 50%;
+    --radius: 1rem;
     
-    --radius: 0.75rem;
-    
-    /* Gradients - Vibrant */
-    --gradient-metro: linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 50%, hsl(var(--brand-red)) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(248 100% 98%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(var(--brand-purple) / 0.1) 0%, transparent 70%);
-    
-    /* Shadows - Colorful */
-    --shadow-purple: 0 8px 32px hsl(var(--brand-purple) / 0.25);
-    --shadow-magenta: 0 8px 32px hsl(var(--brand-magenta) / 0.25);
-    --shadow-elevated: 0 20px 50px hsl(248 58% 20% / 0.12);
-    
-    /* Animation */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Shadows - Colored & Glowing */
+    --shadow-purple: 0 10px 40px -10px hsl(var(--brand-purple) / 0.4);
+    --shadow-magenta: 0 10px 40px -10px hsl(var(--brand-magenta) / 0.4);
+    --shadow-cyan: 0 10px 40px -10px hsl(var(--brand-cyan) / 0.4);
   }
 }
 
@@ -73,15 +56,13 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
   }
-  
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -89,15 +70,26 @@ All colors MUST be HSL.
   .metro-line {
     background: linear-gradient(90deg, 
       hsl(var(--brand-purple)) 0%, 
-      hsl(var(--brand-magenta)) 50%, 
-      hsl(var(--brand-red)) 100%
+      hsl(var(--brand-magenta)) 35%,
+      hsl(var(--brand-red)) 70%,
+      hsl(var(--brand-yellow)) 100%
     );
-    height: 3px;
-    border-radius: 2px;
+    height: 4px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px hsl(var(--brand-purple) / 0.5);
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-magenta)));
+    background: linear-gradient(to right, hsl(var(--brand-purple)), hsl(var(--brand-magenta)), hsl(var(--brand-red)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradient-x 4s linear infinite;
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(to right, hsl(var(--brand-cyan)), hsl(var(--brand-purple)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -106,8 +98,40 @@ All colors MUST be HSL.
   .glow-purple {
     box-shadow: var(--shadow-purple);
   }
-  
   .glow-magenta {
     box-shadow: var(--shadow-magenta);
+  }
+  
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-lg border border-white/50 shadow-xl;
+  }
+
+  .blob {
+    @apply absolute rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob;
+  }
+  
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
 }

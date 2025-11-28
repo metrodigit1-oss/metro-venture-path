@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp, Sprout, Hammer, Flag, Maximize2 } from "lucide-react";
 import { motion } from "framer-motion";
 import cityscape from "@/assets/hero-cityscape.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const navigate = useNavigate();
+
+  const stations = [
+    { name: "Seed", color: "brand-purple", icon: Sprout },
+    { name: "Build", color: "brand-magenta", icon: Hammer },
+    { name: "Scale", color: "brand-red", icon: Maximize2 },
+    { name: "Exit", color: "brand-yellow", icon: Flag }
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40">
@@ -22,7 +29,7 @@ const Hero = () => {
 
       {/* Animated Metro Line */}
       <motion.div 
-        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50 mt-16"
+        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50 mt-10"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
@@ -70,25 +77,25 @@ const Hero = () => {
 
           {/* Metro Stations - Visual Journey Indicator */}
           <motion.div 
-            className="mt-20 flex justify-center items-center gap-8"
+            className="mt-20 flex justify-center items-center gap-8 md:gap-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
           >
-            {[
-              { name: "Seed", color: "brand-purple" },
-              { name: "Build", color: "brand-magenta" },
-              { name: "Scale", color: "brand-red" }
-            ].map((station, i) => (
+            {stations.map((station, i) => (
               <motion.div 
                 key={station.name}
-                className="flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-3 group cursor-pointer"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.4 + (i * 0.2), type: "spring" }}
               >
-                <div className={`w-4 h-4 rounded-full bg-\${station.color} animate-pulse-glow shadow-lg`} />
-                <span className="text-sm font-display text-muted-foreground font-medium">{station.name}</span>
+                <div className={`w-14 h-14 rounded-full bg-background border-[3px] border-\${station.color} flex items-center justify-center shadow-lg z-10 relative group-hover:scale-110 transition-transform duration-300 ring-4 ring-background`}>
+                  <station.icon className={`w-6 h-6 text-\${station.color}`} />
+                </div>
+                <span className={`text-sm font-display font-bold tracking-widest uppercase text-muted-foreground group-hover:text-\${station.color} transition-colors`}>
+                  {station.name}
+                </span>
               </motion.div>
             ))}
           </motion.div>

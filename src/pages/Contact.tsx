@@ -44,8 +44,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Email Us</p>
-                      <a href="mailto:hello@metrodigitech.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        hello@metrodigitech.com
+                      <a href="mailto:metrodigit1@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        metrodigit1@gmail.com
                       </a>
                     </div>
                   </div>
@@ -56,8 +56,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Call Us</p>
-                      <a href="tel:+15550000000" className="text-muted-foreground hover:text-primary transition-colors">
-                        +1 (555) 000-0000
+                      <a href="Ph:+91 94465 76362" className="text-muted-foreground hover:text-primary transition-colors">
+                        +91 94465 76362
                       </a>
                     </div>
                   </div>
@@ -69,8 +69,10 @@ const Contact = () => {
                     <div>
                       <p className="font-medium">Visit Us</p>
                       <p className="text-muted-foreground">
-                        123 Innovation Station,<br />
-                        Tech District, City 90210
+                        Building No.: VIII/387/B, <br /> 
+                        Keezhillam, Perumbavoor, <br />
+                        Ernakulam, Kerala 683541
+                        
                       </p>
                     </div>
                   </div>

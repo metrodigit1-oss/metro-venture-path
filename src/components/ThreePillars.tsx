@@ -51,7 +51,11 @@ const ThreePillars = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-32 px-6 relative bg-background">
+    <section id="services" className="py-32 px-6 relative bg-background overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-[100px] -z-10" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-magenta/5 rounded-full blur-[100px] -z-10" />
+
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="text-center mb-20"
@@ -60,13 +64,13 @@ const ThreePillars = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6">
+          <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
             The <span className="text-gradient">Metro Line</span> to Success
           </h2>
           
-          {/* Metro Line */}
+          {/* Metro Line - Glowing */}
           <motion.div 
-            className="hidden md:block h-1 metro-line mb-8 w-full max-w-[200px] mx-auto rounded-full"
+            className="hidden md:block h-1.5 metro-line mb-8 w-full max-w-[250px] mx-auto rounded-full shadow-[0_0_20px_hsl(var(--brand-purple))]"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -93,20 +97,20 @@ const ThreePillars = () => {
             >
               <Card 
                 className={`
-                  relative p-8 h-full border-2 transition-all duration-500 flex flex-col
-                  ${hoveredIndex === index 
-                    ? `border-${pillar.color} shadow-[0_0_50px_-12px_rgba(0,0,0,0.1)] scale-105 z-10` 
-                    : 'border-border hover:border-muted-foreground'
+                  relative p-8 h-full border-2 transition-all duration-500 flex flex-col rounded-3xl overflow-hidden
+                  \${hoveredIndex === index 
+                    ? \`border-\${pillar.color} shadow-[0_0_40px_-10px_hsl(var(--\${pillar.color})/0.4)] scale-105 z-10\` 
+                    : 'border-border/50 bg-white/50 backdrop-blur-sm'
                   }
                 `}
               >
                 {/* Icon */}
                 <div className={`
-                  w-16 h-16 rounded-2xl flex items-center justify-center mb-6
-                  bg-${pillar.color}/10 border-2 border-${pillar.color}
-                  ${hoveredIndex === index ? 'animate-pulse-glow' : ''}
+                  w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300
+                  bg-\${pillar.color}/10 border-2 border-\${pillar.color}/20
+                  \${hoveredIndex === index ? 'scale-110 rotate-3 border-' + pillar.color : ''}
                 `}>
-                  <pillar.icon className={`w-8 h-8 text-${pillar.color}`} />
+                  <pillar.icon className={`w-10 h-10 text-\${pillar.color}`} />
                 </div>
 
                 {/* Title */}
@@ -114,13 +118,13 @@ const ThreePillars = () => {
                   <h3 className="text-3xl font-display font-bold mb-1">
                     {pillar.title}
                   </h3>
-                  <p className={`text-sm font-semibold text-${pillar.color}`}>
+                  <p className={`text-sm font-bold tracking-wider uppercase text-\${pillar.color}`}>
                     {pillar.subtitle}
                   </p>
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed font-medium">
                   {pillar.description}
                 </p>
 
@@ -133,7 +137,7 @@ const ThreePillars = () => {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden mb-6"
                     >
-                      <p className="text-sm text-foreground/80 leading-relaxed bg-secondary/10 p-4 rounded-lg">
+                      <p className="text-sm text-foreground/90 leading-relaxed bg-gradient-to-br from-white to-secondary/10 p-5 rounded-xl border border-secondary/20 shadow-inner">
                         {pillar.details}
                       </p>
                     </motion.div>
@@ -141,10 +145,10 @@ const ThreePillars = () => {
                 </AnimatePresence>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-8 flex-grow">
+                <ul className="space-y-4 mb-8 flex-grow">
                   {pillar.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm font-medium">
-                      <div className={`w-1.5 h-1.5 rounded-full bg-${pillar.color}`} />
+                    <li key={feature} className="flex items-center gap-3 text-sm font-semibold text-foreground/80">
+                      <div className={`w-2 h-2 rounded-full bg-\${pillar.color} shadow-[0_0_10px_hsl(var(--\${pillar.color}))]`} />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -153,10 +157,10 @@ const ThreePillars = () => {
                 {/* Toggle Button */}
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-between group hover:bg-secondary/10"
+                  className={`w-full justify-between group hover:bg-blue-700 rounded-xl`}
                   onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                 >
-                  <span className="text-sm font-semibold">
+                  <span className="text-sm font-bold">
                     {expandedIndex === index ? "Show Less" : "Learn More"}
                   </span>
                   {expandedIndex === index ? (
@@ -166,9 +170,9 @@ const ThreePillars = () => {
                   )}
                 </Button>
 
-                {/* Hover Effect Line */}
+                {/* Hover Effect Line - Bottom Glow */}
                 <motion.div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-${pillar.color}`}
+                  className={`absolute bottom-0 left-0 right-0 h-1.5 bg-\${pillar.color}`}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: hoveredIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
