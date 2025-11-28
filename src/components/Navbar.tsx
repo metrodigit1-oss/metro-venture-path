@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-2 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
           <img 
@@ -19,7 +19,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 mr-20">
           <a href="/#services" className="text-sm font-medium hover:text-primary transition-colors">
             Services
           </a>

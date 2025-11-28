@@ -18,18 +18,9 @@ const footerStations = [
       { name: "About", href: "/#vision" },
       { name: "Team", href: "/#team" },
       { name: "Careers", href: "/careers" },
-      { name: "Blog", href: "/blog" }
+      { name: "Contact", href: "/blog" }
     ]
   },
-  {
-    title: "Resources",
-    links: [
-      { name: "Case Studies", href: "/case-studies" },
-      { name: "Founder FAQ", href: "/faq" },
-      { name: "Investor Relations", href: "/investors" },
-      { name: "Contact", href: "/contact" }
-    ]
-  }
 ];
 
 const Footer = () => {
@@ -39,12 +30,12 @@ const Footer = () => {
         {/* Metro Map Style Layout */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
-          <div>
+          <div className="md: col-span-2">
              <Link to="/" className="flex items-center gap-3">
           <img 
             src={logo} 
             alt="Metro Digitech Logo" 
-            className="h-15 w-auto"
+            className="h-[75px] w-auto"
           />
         </Link>
             <p className="text-sm text-muted-foreground mt-2 mb-6">
