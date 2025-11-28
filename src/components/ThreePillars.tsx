@@ -8,7 +8,7 @@ const pillars = [
     icon: Coins,
     title: "Seed Capital",
     subtitle: "The Fuel",
-    color: "venture-gold",
+    color: "brand-purple",
     description: "Smart money that understands tech. We invest $50K-$500K in pre-seed and seed rounds—but we also roll up our sleeves.",
     features: [
       "Equity + Dev Resources",
@@ -20,7 +20,7 @@ const pillars = [
     icon: Compass,
     title: "Project Management",
     subtitle: "The Navigation",
-    color: "signal-green",
+    color: "brand-magenta",
     description: "We translate investor capital into shippable code. No bloat, no delays—just the straightest line to your MVP.",
     features: [
       "Agile sprint planning",
@@ -32,7 +32,7 @@ const pillars = [
     icon: Code2,
     title: "Development",
     subtitle: "The Engine",
-    color: "metro-blue",
+    color: "brand-red",
     description: "World-class engineers building production-ready products. React, Python, AWS—whatever scales your vision.",
     features: [
       "Full-stack expertise",
@@ -46,7 +46,7 @@ const ThreePillars = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-32 px-6 relative">
+    <section id="services" className="py-32 px-6 relative bg-background">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="text-center mb-20"

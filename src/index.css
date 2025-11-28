@@ -8,58 +8,60 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Metro Digitech Design System - Dark Mode Default */
+    /* Metro Digitech Design System - Light & Vibrant */
     
-    /* Core Brand Colors */
-    --obsidian: 222 47% 7%;
-    --metro-blue: 217 91% 60%;
-    --venture-gold: 43 75% 53%;
-    --signal-green: 160 84% 39%;
+    /* Core Brand Colors - Inspired by Logo */
+    --brand-purple: 248 58% 50%;
+    --brand-magenta: 328 100% 54%;
+    --brand-red: 357 85% 57%;
+    --brand-cyan: 184 100% 50%;
+    --brand-yellow: 48 100% 50%;
     
-    /* Surface Colors */
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
+    /* Surface Colors - Light & Clean */
+    --background: 0 0% 100%;
+    --foreground: 248 58% 20%;
     
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 98%;
+    --card-foreground: 248 58% 20%;
     
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 248 58% 20%;
     
     /* Semantic Colors */
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 7%;
+    --primary: 248 58% 50%;
+    --primary-foreground: 0 0% 100%;
     
-    --secondary: 222 47% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 328 100% 54%;
+    --secondary-foreground: 0 0% 100%;
     
-    --muted: 222 47% 13%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 248 20% 95%;
+    --muted-foreground: 248 20% 40%;
     
-    --accent: 43 75% 53%;
-    --accent-foreground: 222 47% 7%;
+    --accent: 357 85% 57%;
+    --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     
-    --success: 160 84% 39%;
-    --success-foreground: 222 47% 7%;
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
     
     /* Borders & Inputs */
-    --border: 222 47% 20%;
-    --input: 222 47% 20%;
-    --ring: 217 91% 60%;
+    --border: 248 20% 88%;
+    --input: 248 20% 88%;
+    --ring: 248 58% 50%;
     
     --radius: 0.75rem;
     
-    /* Gradients */
-    --gradient-metro: linear-gradient(135deg, hsl(var(--metro-blue)) 0%, hsl(var(--venture-gold)) 100%);
-    --gradient-depth: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(222 47% 5%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(var(--metro-blue) / 0.15) 0%, transparent 70%);
+    /* Gradients - Vibrant */
+    --gradient-metro: linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 50%, hsl(var(--brand-red)) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(248 100% 98%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(var(--brand-purple) / 0.1) 0%, transparent 70%);
     
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(var(--metro-blue) / 0.3);
-    --shadow-elevated: 0 20px 50px hsl(222 47% 3% / 0.5);
+    /* Shadows - Colorful */
+    --shadow-purple: 0 8px 32px hsl(var(--brand-purple) / 0.25);
+    --shadow-magenta: 0 8px 32px hsl(var(--brand-magenta) / 0.25);
+    --shadow-elevated: 0 20px 50px hsl(248 58% 20% / 0.12);
     
     /* Animation */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -86,26 +88,26 @@ All colors MUST be HSL.
 @layer utilities {
   .metro-line {
     background: linear-gradient(90deg, 
-      hsl(var(--metro-blue)) 0%, 
-      hsl(var(--venture-gold)) 50%, 
-      hsl(var(--signal-green)) 100%
+      hsl(var(--brand-purple)) 0%, 
+      hsl(var(--brand-magenta)) 50%, 
+      hsl(var(--brand-red)) 100%
     );
     height: 3px;
     border-radius: 2px;
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--metro-blue)), hsl(var(--venture-gold)));
+    background: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-magenta)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
-  .glow-blue {
-    box-shadow: 0 0 30px hsl(var(--metro-blue) / 0.4);
+  .glow-purple {
+    box-shadow: var(--shadow-purple);
   }
   
-  .glow-gold {
-    box-shadow: 0 0 30px hsl(var(--venture-gold) / 0.4);
+  .glow-magenta {
+    box-shadow: var(--shadow-magenta);
   }
 }

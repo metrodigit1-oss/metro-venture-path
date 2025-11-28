@@ -17,7 +17,7 @@ const footerStations = [
 
 const Footer = () => {
   return (
-    <footer className="bg-card/30 border-t border-border py-16 px-6">
+    <footer className="bg-muted border-t border-border py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Metro Map Style Layout */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">

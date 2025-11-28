@@ -1,19 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-cityscape.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Metro Digitech cityscape representing startup journey" 
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-soft">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-magenta/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-brand-cyan/10 rounded-full blur-3xl" />
       </div>
 
       {/* Animated Metro Line */}
@@ -46,7 +42,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold glow-blue"
+              className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold glow-purple"
             >
               Pitch Your Idea
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -55,7 +51,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-6 text-lg font-semibold"
+              className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-6 text-lg font-semibold"
             >
               <TrendingUp className="mr-2" />
               View Portfolio
@@ -70,9 +66,9 @@ const Hero = () => {
             transition={{ delay: 1.2 }}
           >
             {[
-              { name: "Seed", color: "venture-gold" },
-              { name: "Build", color: "signal-green" },
-              { name: "Scale", color: "metro-blue" }
+              { name: "Seed", color: "brand-purple" },
+              { name: "Build", color: "brand-magenta" },
+              { name: "Scale", color: "brand-red" }
             ].map((station, i) => (
               <motion.div 
                 key={station.name}
