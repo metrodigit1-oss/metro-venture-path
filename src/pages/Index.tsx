@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import MetricsTicker from "@/components/MetricsTicker";
+import Vision from "@/components/Vision";
 import ThreePillars from "@/components/ThreePillars";
 import ProcessJourney from "@/components/ProcessJourney";
 import CTA from "@/components/CTA";
@@ -11,7 +11,7 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <MetricsTicker />
+      <Vision />
       <ThreePillars />
       <ProcessJourney />
       <CTA />

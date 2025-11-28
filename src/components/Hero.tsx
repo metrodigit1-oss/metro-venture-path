@@ -1,27 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
+import cityscape from "@/assets/hero-cityscape.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-soft">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-magenta/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-brand-cyan/10 rounded-full blur-3xl" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={cityscape} 
+          alt="Metro Cityscape" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-brand-purple/10 mix-blend-overlay" />
       </div>
 
       {/* Animated Metro Line */}
       <motion.div 
-        className="absolute top-1/2 left-0 right-0 h-1 metro-line"
+        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,16 +38,16 @@ const Hero = () => {
             We Build Them.
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light">
             Smart capital meets world-class development. <br />
-            From napkin sketch to Series A—all on one platform.
+            We are the co-founder you've been waiting for—from napkin sketch to Series A.
           </p>
 
           {/* Split CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold glow-purple"
+              className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold glow-purple shadow-xl"
             >
               Pitch Your Idea
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -51,10 +56,10 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-6 text-lg font-semibold"
+              className="border-2 border-primary/20 text-foreground hover:bg-primary/5 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
             >
               <TrendingUp className="mr-2" />
-              View Portfolio
+              Our Philosophy
             </Button>
           </div>
 
@@ -77,28 +82,13 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.4 + (i * 0.2), type: "spring" }}
               >
-                <div className={`w-4 h-4 rounded-full bg-${station.color} animate-pulse-glow`} />
-                <span className="text-sm font-display text-muted-foreground">{station.name}</span>
+                <div className='w-4 h-4 rounded-full bg-\${station.color} animate-pulse-glow shadow-lg' />
+                <span className="text-sm font-display text-muted-foreground font-medium">{station.name}</span>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ 
-          opacity: { delay: 1.8 },
-          y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
-        }}
-      >
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full" />
-        </div>
-      </motion.div>
     </section>
   );
 };
