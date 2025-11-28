@@ -132,7 +132,7 @@ const ThreePillars = () => {
 
         {/* Connection Line */}
         <motion.div 
-          className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 metro-line"
+          className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 metro-line mb-5"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}

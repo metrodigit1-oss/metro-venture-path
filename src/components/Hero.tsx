@@ -19,7 +19,7 @@ const Hero = () => {
 
       {/* Animated Metro Line */}
       <motion.div 
-        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50"
+        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50 mt-6"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}

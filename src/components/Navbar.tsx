@@ -23,9 +23,6 @@ const Navbar = () => {
           <a href="#process" className="text-sm font-medium hover:text-primary transition-colors">
             Process
           </a>
-          <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">
-            Portfolio
-          </a>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
             Contact
           </a>
