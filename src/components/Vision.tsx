@@ -22,7 +22,7 @@ const features = [
 
 const Vision = () => {
   return (
-    <section className="py-24 px-6 bg-secondary/5 border-y border-border relative overflow-hidden">
+    <section id="vision" className="py-24 px-6 bg-secondary/5 border-y border-border relative overflow-hidden">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         
         {/* Left Content */}

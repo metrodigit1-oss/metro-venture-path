@@ -9,7 +9,6 @@ const footerStations = [
       { name: "Seed Venture Capital", href: "/#services" },
       { name: "Project Management", href: "/#process" },
       { name: "Development", href: "/#process" },
-      { name: "Portfolio", href: "/#portfolio" }
     ]
   },
   {

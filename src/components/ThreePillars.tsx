@@ -1,7 +1,8 @@
 import { Card } from "@/components/ui/card";
-import { Coins, Compass, Code2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Coins, Compass, Code2, Plus, Minus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const pillars = [
   {
@@ -10,6 +11,7 @@ const pillars = [
     subtitle: "The Fuel",
     color: "brand-purple",
     description: "Smart money that understands tech. We invest $50K-$500K in pre-seed and seed rounds—but we also roll up our sleeves.",
+    details: "Our investment committee moves fast. We don't just look at pitch decks; we look at GitHub repositories. We offer founder-friendly terms (SAFE or Convertible Note) designed to get you to your next milestone without giving up control.",
     features: [
       "Equity + Dev Resources",
       "6-12 month runway",
@@ -22,6 +24,7 @@ const pillars = [
     subtitle: "The Navigation",
     color: "brand-magenta",
     description: "We translate investor capital into shippable code. No bloat, no delays—just the straightest line to your MVP.",
+    details: "You get a dedicated Technical Product Manager (TPM) who acts as your CTO. They handle sprint planning, ticket grooming, and vendor management, ensuring every dollar spent goes directly into product value.",
     features: [
       "Agile sprint planning",
       "Real-time dashboards",
@@ -34,6 +37,7 @@ const pillars = [
     subtitle: "The Engine",
     color: "brand-red",
     description: "World-class engineers building production-ready products. React, Python, AWS—whatever scales your vision.",
+    details: "Forget freelancing marketplaces. Our in-house engineering pod integrates with your team. We enforce strict code quality standards, automated testing, and scalable cloud architecture from day one.",
     features: [
       "Full-stack expertise",
       "CI/CD pipelines",
@@ -44,6 +48,7 @@ const pillars = [
 
 const ThreePillars = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
     <section id="services" className="py-32 px-6 relative bg-background">
@@ -84,12 +89,13 @@ const ThreePillars = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
+              className="h-full"
             >
               <Card 
                 className={`
-                  relative p-8 h-full border-2 transition-all duration-500
-                  \${hoveredIndex === index 
-                    ? \`border-\${pillar.color} shadow-2xl scale-105\` 
+                  relative p-8 h-full border-2 transition-all duration-500 flex flex-col
+                  ${hoveredIndex === index 
+                    ? `border-${pillar.color} shadow-[0_0_50px_-12px_rgba(0,0,0,0.1)] scale-105 z-10` 
                     : 'border-border hover:border-muted-foreground'
                   }
                 `}
@@ -97,10 +103,10 @@ const ThreePillars = () => {
                 {/* Icon */}
                 <div className={`
                   w-16 h-16 rounded-2xl flex items-center justify-center mb-6
-                  bg-\${pillar.color}/10 border-2 border-\${pillar.color}
-                  \${hoveredIndex === index ? 'animate-pulse-glow' : ''}
+                  bg-${pillar.color}/10 border-2 border-${pillar.color}
+                  ${hoveredIndex === index ? 'animate-pulse-glow' : ''}
                 `}>
-                  <pillar.icon className={`w-8 h-8 text-\${pillar.color}`} />
+                  <pillar.icon className={`w-8 h-8 text-${pillar.color}`} />
                 </div>
 
                 {/* Title */}
@@ -108,7 +114,7 @@ const ThreePillars = () => {
                   <h3 className="text-3xl font-display font-bold mb-1">
                     {pillar.title}
                   </h3>
-                  <p className={`text-sm font-semibold text-\${pillar.color}`}>
+                  <p className={`text-sm font-semibold text-${pillar.color}`}>
                     {pillar.subtitle}
                   </p>
                 </div>
@@ -118,19 +124,51 @@ const ThreePillars = () => {
                   {pillar.description}
                 </p>
 
+                {/* Expanded Details */}
+                <AnimatePresence>
+                  {expandedIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden mb-6"
+                    >
+                      <p className="text-sm text-foreground/80 leading-relaxed bg-secondary/10 p-4 rounded-lg">
+                        {pillar.details}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 {/* Features */}
-                <ul className="space-y-3">
+                <ul className="space-y-3 mb-8 flex-grow">
                   {pillar.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm">
-                      <div className={`w-1.5 h-1.5 rounded-full bg-\${pillar.color}`} />
+                    <li key={feature} className="flex items-center gap-2 text-sm font-medium">
+                      <div className={`w-1.5 h-1.5 rounded-full bg-${pillar.color}`} />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
+                {/* Toggle Button */}
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-between group hover:bg-secondary/10"
+                  onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                >
+                  <span className="text-sm font-semibold">
+                    {expandedIndex === index ? "Show Less" : "Learn More"}
+                  </span>
+                  {expandedIndex === index ? (
+                    <Minus className="w-4 h-4" />
+                  ) : (
+                    <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
+                  )}
+                </Button>
+
                 {/* Hover Effect Line */}
                 <motion.div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-\${pillar.color}`}
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-${pillar.color}`}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: hoveredIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
