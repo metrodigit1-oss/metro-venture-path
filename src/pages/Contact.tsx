@@ -18,9 +18,9 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Replace these with your actual EmailJS credentials
-    const SERVICE_ID = "service_kslkri8"; // e.g. "service_kslkri8"
-    const TEMPLATE_ID = "template_npfoxn9";
-    const PUBLIC_KEY = "ThwCeegHkKtF1UrHV";
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID; // e.g. "service_kslkri8"
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     try {
       if (form.current) {
