@@ -2,10 +2,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import cityscape from "@/assets/hero-cityscape.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -19,7 +22,7 @@ const Hero = () => {
 
       {/* Animated Metro Line */}
       <motion.div 
-        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50 mt-6"
+        className="absolute top-1/2 left-0 right-0 h-1 metro-line z-10 opacity-50 mt-16"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
@@ -48,6 +51,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold glow-purple shadow-xl"
+              onClick={() => navigate('/contact')}
             >
               Pitch Your Idea
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -57,6 +61,7 @@ const Hero = () => {
               size="lg" 
               variant="outline"
               className="border-2 border-primary/20 text-foreground hover:bg-primary/5 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
+              onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <TrendingUp className="mr-2" />
               Our Philosophy
@@ -82,7 +87,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.4 + (i * 0.2), type: "spring" }}
               >
-                <div className='w-4 h-4 rounded-full bg-\${station.color} animate-pulse-glow shadow-lg' />
+                <div className={`w-4 h-4 rounded-full bg-\${station.color} animate-pulse-glow shadow-lg`} />
                 <span className="text-sm font-display text-muted-foreground font-medium">{station.name}</span>
               </motion.div>
             ))}

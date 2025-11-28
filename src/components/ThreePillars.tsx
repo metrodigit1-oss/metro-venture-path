@@ -58,6 +58,16 @@ const ThreePillars = () => {
           <h2 className="text-5xl md:text-6xl font-display font-bold mb-6">
             The <span className="text-gradient">Metro Line</span> to Success
           </h2>
+          
+          {/* Metro Line */}
+          <motion.div 
+            className="hidden md:block h-1 metro-line mb-8 w-full max-w-[200px] mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0, delay: 0.2 }}
+          />
+
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Three integrated services. One seamless journey. <br />
             From idea to exit, we're with you every station of the way.
@@ -78,8 +88,8 @@ const ThreePillars = () => {
               <Card 
                 className={`
                   relative p-8 h-full border-2 transition-all duration-500
-                  ${hoveredIndex === index 
-                    ? `border-${pillar.color} shadow-2xl scale-105` 
+                  \${hoveredIndex === index 
+                    ? \`border-\${pillar.color} shadow-2xl scale-105\` 
                     : 'border-border hover:border-muted-foreground'
                   }
                 `}
@@ -87,10 +97,10 @@ const ThreePillars = () => {
                 {/* Icon */}
                 <div className={`
                   w-16 h-16 rounded-2xl flex items-center justify-center mb-6
-                  bg-${pillar.color}/10 border-2 border-${pillar.color}
-                  ${hoveredIndex === index ? 'animate-pulse-glow' : ''}
+                  bg-\${pillar.color}/10 border-2 border-\${pillar.color}
+                  \${hoveredIndex === index ? 'animate-pulse-glow' : ''}
                 `}>
-                  <pillar.icon className={`w-8 h-8 text-${pillar.color}`} />
+                  <pillar.icon className={`w-8 h-8 text-\${pillar.color}`} />
                 </div>
 
                 {/* Title */}
@@ -98,7 +108,7 @@ const ThreePillars = () => {
                   <h3 className="text-3xl font-display font-bold mb-1">
                     {pillar.title}
                   </h3>
-                  <p className={`text-sm font-semibold text-${pillar.color}`}>
+                  <p className={`text-sm font-semibold text-\${pillar.color}`}>
                     {pillar.subtitle}
                   </p>
                 </div>
@@ -112,7 +122,7 @@ const ThreePillars = () => {
                 <ul className="space-y-3">
                   {pillar.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2 text-sm">
-                      <div className={`w-1.5 h-1.5 rounded-full bg-${pillar.color}`} />
+                      <div className={`w-1.5 h-1.5 rounded-full bg-\${pillar.color}`} />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -120,7 +130,7 @@ const ThreePillars = () => {
 
                 {/* Hover Effect Line */}
                 <motion.div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-${pillar.color}`}
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-\${pillar.color}`}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: hoveredIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -129,16 +139,6 @@ const ThreePillars = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Connection Line */}
-        <motion.div 
-          className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 metro-line mb-5"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          style={{ transform: 'translateY(-50%)' }}
-        />
       </div>
     </section>
   );

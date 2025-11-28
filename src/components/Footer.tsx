@@ -1,17 +1,34 @@
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "@/assets/metro-digitech-logo.png";
 
 const footerStations = [
   {
     title: "Services",
-    links: ["Seed Venture Capital", "Project Management", "Development", "Portfolio"]
+    links: [
+      { name: "Seed Venture Capital", href: "/#services" },
+      { name: "Project Management", href: "/#process" },
+      { name: "Development", href: "/#process" },
+      { name: "Portfolio", href: "/#portfolio" }
+    ]
   },
   {
     title: "Company",
-    links: ["About", "Team", "Careers", "Blog"]
+    links: [
+      { name: "About", href: "/#vision" },
+      { name: "Team", href: "/#team" },
+      { name: "Careers", href: "/careers" },
+      { name: "Blog", href: "/blog" }
+    ]
   },
   {
     title: "Resources",
-    links: ["Case Studies", "Founder FAQ", "Investor Relations", "Contact"]
+    links: [
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Founder FAQ", href: "/faq" },
+      { name: "Investor Relations", href: "/investors" },
+      { name: "Contact", href: "/contact" }
+    ]
   }
 ];
 
@@ -23,10 +40,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-display font-bold mb-4 text-gradient">
-              Metro Digitech
-            </h3>
-            <p className="text-sm text-muted-foreground mb-6">
+             <Link to="/" className="flex items-center gap-3">
+          <img 
+            src={logo} 
+            alt="Metro Digitech Logo" 
+            className="h-15 w-auto"
+          />
+        </Link>
+            <p className="text-sm text-muted-foreground mt-2 mb-6">
               The fastest line from idea to exit.
             </p>
             <div className="flex gap-4">
@@ -48,14 +69,26 @@ const Footer = () => {
               <h4 className="font-display font-semibold mb-4">{station.title}</h4>
               <ul className="space-y-2">
                 {station.links.map((link) => (
-                  <li key={link}>
-                    <a 
-                      href="#" 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                      {link}
-                    </a>
+                  <li key={link.name}>
+                    {link.href.startsWith('http') ? (
+                       <a 
+                       href={link.href}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                     >
+                       <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                       {link.name}
+                     </a>
+                    ) : (
+                      <Link 
+                        to={link.href} 
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -69,9 +102,9 @@ const Footer = () => {
             © 2025 Metro Digitech. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-foreground transition-colors">Legal</a>
+            <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link to="/legal" className="hover:text-foreground transition-colors">Legal</Link>
           </div>
         </div>
       </div>

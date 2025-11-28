@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const CTA = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="contact" className="py-32 px-6 relative overflow-hidden bg-background">
       {/* Background Effects */}
@@ -18,8 +21,6 @@ const CTA = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        
-
         <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
           Ready to Board <br />
           <span className="text-gradient">The Metro?</span>
@@ -31,15 +32,16 @@ const CTA = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          
-          
           <Button 
             size="lg"
-            variant="outline"
-            className="border-2 border-border hover:border-primary/50 px-10 py-7 text-lg rounded-full"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-7 text-lg font-semibold glow-purple group rounded-full"
+            onClick={() => navigate('/contact')}
           >
-            Schedule a Discovery Call
+            <Mail className="mr-2 w-5 h-5" />
+            Apply for Partnership
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
+          
         </div>
       </motion.div>
     </section>
