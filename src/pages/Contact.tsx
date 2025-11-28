@@ -1,19 +1,45 @@
+import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
-import { toast } from "sonner"; // Assuming you are using sonner as per App.tsx
+import { Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would send this data to your backend
-    toast.success("Message sent successfully!", {
-      description: "We'll get back to you within 24 hours."
-    });
+    setIsSubmitting(true);
+
+    // Replace these with your actual EmailJS credentials
+    const SERVICE_ID = "service_kslkri8"; // e.g. "service_kslkri8"
+    const TEMPLATE_ID = "template_npfoxn9";
+    const PUBLIC_KEY = "ThwCeegHkKtF1UrHV";
+
+    try {
+      if (form.current) {
+        await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY);
+        
+        toast.success("Message sent successfully!", {
+          description: "We'll get back to you within 24 hours."
+        });
+        
+        form.current.reset();
+      }
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      toast.error("Failed to send message.", {
+        description: "Please try again later or email us directly."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -56,7 +82,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Call Us</p>
-                      <a href="Ph:+91 94465 76362" className="text-muted-foreground hover:text-primary transition-colors">
+                      <a href="tel:+919446576362" className="text-muted-foreground hover:text-primary transition-colors">
                         +91 94465 76362
                       </a>
                     </div>
@@ -72,7 +98,6 @@ const Contact = () => {
                         Building No.: VIII/387/B, <br /> 
                         Keezhillam, Perumbavoor, <br />
                         Ernakulam, Kerala 683541
-                        
                       </p>
                     </div>
                   </div>
@@ -82,41 +107,51 @@ const Contact = () => {
 
             {/* Contact Form */}
             <Card className="p-8 border-primary/10 shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="firstName" className="text-sm font-medium">First Name</label>
-                    <Input id="firstName" placeholder="Jane" required />
+                    <label htmlFor="user_firstname" className="text-sm font-medium">First Name</label>
+                    <Input id="user_firstname" name="user_firstname" placeholder="Jane" required />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="lastName" className="text-sm font-medium">Last Name</label>
-                    <Input id="lastName" placeholder="Doe" required />
+                    <label htmlFor="user_lastname" className="text-sm font-medium">Last Name</label>
+                    <Input id="user_lastname" name="user_lastname" placeholder="Doe" required />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Email</label>
-                  <Input id="email" type="email" placeholder="jane@example.com" required />
+                  <label htmlFor="user_email" className="text-sm font-medium">Email</label>
+                  <Input id="user_email" name="user_email" type="email" placeholder="jane@example.com" required />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                  <Input id="subject" placeholder="Project Inquiry" required />
+                  <Input id="subject" name="subject" placeholder="Project Inquiry" required />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium">Message</label>
                   <Textarea 
-                    id="message" 
+                    id="message"
+                    name="message" 
                     placeholder="Tell us about your project..." 
                     className="min-h-[150px]" 
                     required 
                   />
                 </div>
 
-                <Button type="submit" className="w-full glow-purple group" size="lg">
-                  Send Message
-                  <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Button type="submit" className="w-full glow-purple group" size="lg" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
                 </Button>
               </form>
             </Card>
